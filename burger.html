@@ -14,42 +14,85 @@
             background-color: black;
         }
 
-        img {
+        img class="style1"{
             max-width: 90%;
             max-height: 90%;
             border-radius: 10px;
         }
-        button {
+        .button1{
             margin-top: 20px;
-            padding: 30px 2px;
+            padding: 10px 10px;
             font-size: 1rem;
-            background-color: linear-gradient(red, yellow);
-            color: linear-gradient(yellow, red);
-            border: 1px dashed white;
+            background-color: blue;
+            color: yellow;
+            border: none;
+            cursor: progress;
+            transition: 0.1s;
+        }
+        .button2{
+            margin-top: 20px;
+            padding: 20px 20px;
+            font-size: 1rem;
+            background-color: black;
+            color: white;
+            border: 5px dashed orange;
             cursor: progress;
             transition: 0.1s;
         }
         button:hover {
-            background-color: purple;
+            animation: rainbow 0.5s infinite linear;
+        }
+        @keyframes rainbow {
+          0% { background: yellow; }
+          50% { background: green; }
+          100% { background: yellow; }
         }
         .styled-link {
             color: red; /* Link color */
-            font-size: 12rem; /* Makes the text bigger */
+            font-size: 8rem; /* Makes the text bigger */
         }
+      
         .styled-link:hover {
             color: blue; /* Changes color when hovered */
             text-decoration: none; /* Adds underline */
+        }
+       .top-right-image {
+           position: absolute;
+           top: 5px;
+           right: 5px;
+           width: 40px; /* Adjust size */
+           height: auto;
+        }
+      .counter {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            background: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <div style="text-align: center;">
-        <img src="chickenburger.png" alt="Cool Image">
-        <button onclick="window.location.href='index.html'">add to order</button>
-        <br>
-        <button onclick="window.location.href='index.html'">back</button>
+        <img src="chickenburger.png" class="style1" alt="Cool Image">
+        <button class="button1" onclick="increaseCounter()">add to order</button>
         <br>
         <a href = "https://www.youtube.com/watch?v=IjjZlMydwmk" class="styled-link">cool video</a>
+        <br>
+        <button class="button2" onclick="window.location.href='index.html'">back</button>
     </div>
 </body>
+        <img src="cart.png" class"top-right-image">
+        <div id="counter" class="counter">0</div>
+        <script>
+          let count = 0; // Initial counter value
+
+          function increaseCounter() {
+              count++; // Increase counter by 1
+              document.getElementById("counter").innerText = count; // Update counter display
+          }
+        </script>
 </html>
