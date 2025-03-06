@@ -22,7 +22,7 @@
             justify-content: space-between;
             align-items: center;
             background: url('bambu.PNG');
-            background-size: 300px;
+            background-size: 100px;
             background-repeat: repeat;
             background-color: rgba(163, 217, 119, 0.8);
             padding: 10px 20px;
@@ -33,9 +33,9 @@
             font-family: 'Bubblegum Sans', cursive;
             font-size: 2rem;
             color: #a8e6a3;
-            text-shadow: 4px 4px 8px white;
+            text-shadow: 4px 4px 8px black;
         }
-        .home-button {
+        .home-button, .sign-in {
             background-color: #81c784;
             color: white;
             border: none;
@@ -45,27 +45,21 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .home-button:hover {
+        .home-button:hover, .sign-in:hover {
             background-color: #66bb6a;
         }
-        .sign-in {
-            font-size: 1rem;
-            color: #4caf50;
-            cursor: pointer;
-            padding: 10px;
-            background-color: #d8f3dc;
-            border-radius: 5px;
-            margin-right: 20px;
+        .home-button {
+            margin-left: 20px;
         }
-        .sign-in:hover {
-            text-decoration: underline;
+        .sign-in {
+            margin-right: 20px;
         }
         .menu {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
-            margin: 50px 0 20px 0;
+            margin: 30px 0 20px 0;
         }
         .menu button {
             background-color: #81c784;
@@ -76,7 +70,7 @@
             border-radius: 10px;
             cursor: pointer;
             transition: 0.3s;
-            flex: 1;
+            flex: 1 1 150px;
             max-width: 200px;
         }
         .menu button:hover {
@@ -100,12 +94,10 @@
             font-size: 6rem;
             color: #a8e6a3;
             text-shadow: 4px 4px 8px white;
-            margin-top: 50px;
+            margin-top: 30px;
+            margin-bottom: 20px;
         }
         @media (max-width: 768px) {
-            .top-bar {
-                top: -100px;
-            }
             body:hover .top-bar {
                 top: 0;
             }
@@ -115,7 +107,9 @@
         let lastScrollY = window.scrollY;
         window.addEventListener('scroll', () => {
             const topBar = document.querySelector('.top-bar');
-            if (window.scrollY > lastScrollY) {
+            if (window.scrollY === 0) {
+                topBar.style.top = '0';
+            } else if (window.scrollY > lastScrollY) {
                 topBar.style.top = '-100px';
             } else {
                 topBar.style.top = '0';
@@ -128,7 +122,7 @@
     <div class="top-bar">
         <button class="home-button" onclick="window.location.href='index.html'">Home</button>
         <div class="top-title">Shiba Matcha</div>
-        <div class="sign-in" onclick="alert('Sign in feature coming soon!')">Sign In</div>
+        <button class="sign-in" onclick="alert('Sign in feature coming soon!')">Sign In</button>
     </div>
     <div class="body-title">Shiba Matcha</div>
     <div class="menu">
