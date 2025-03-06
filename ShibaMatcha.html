@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shiba Matcha</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+        
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -12,20 +14,50 @@
             margin: 0;
             padding: 0;
         }
-        .header {
-            font-size: 3rem;
-            font-weight: bold;
+        .top-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: url('https://www.transparenttextures.com/patterns/bamboo.png');
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .top-title {
+            font-family: 'Bubblegum Sans', cursive;
+            font-size: 2rem;
             color: #4caf50;
             text-shadow: 2px 2px 5px #a2d5c6;
-            padding: 20px;
-            margin-top: 50px;
+        }
+        .home-button {
+            background-color: #81c784;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .home-button:hover {
+            background-color: #66bb6a;
+        }
+        .sign-in {
+            font-size: 1rem;
+            color: #4caf50;
+            cursor: pointer;
+        }
+        .sign-in:hover {
+            text-decoration: underline;
         }
         .menu {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
-            margin: 20px 0;
+            margin: 80px 0 20px 0;
         }
         .menu button {
             background-color: #81c784;
@@ -53,46 +85,14 @@
             max-width: 800px;
             margin: auto;
         }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #f2f2eb;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .home-button {
-            background-color: #81c784;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .home-button:hover {
-            background-color: #66bb6a;
-        }
-        .sign-in {
-            font-size: 1rem;
-            color: #4caf50;
-            cursor: pointer;
-        }
-        .sign-in:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
     <div class="top-bar">
         <button class="home-button" onclick="window.location.href='index.html'">Home</button>
+        <div class="top-title">Shiba Matcha</div>
         <div class="sign-in" onclick="alert('Sign in feature coming soon!')">Sign In</div>
     </div>
-    <div class="header">Shiba Matcha</div>
     <div class="menu">
         <button>Page 1</button>
         <button>Page 2</button>
