@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiba Matcha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2eb;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4caf50;
+            text-shadow: 2px 2px 5px #a2d5c6;
+            padding: 20px;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .menu button {
+            background-color: #81c784;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .menu button:hover {
+            background-color: #66bb6a;
+        }
+        .image-container img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        .description {
+            font-size: 1.2rem;
+            color: #555;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Shiba Matcha</div>
+    <div class="menu">
+        <button>Page 1</button>
+        <button>Page 2</button>
+        <button>Page 3</button>
+        <button>Page 4</button>
+        <button>Page 5</button>
+        <button>Page 6</button>
+        <button>Page 7</button>
+        <button>Page 8</button>
+        <button>Page 9</button>
+        <button>Page 10</button>
+    </div>
+    <div class="image-container">
+        <img src="A_serene_and_cozy_scene_featuring_a_Shiba_Inu_sitt.png" alt="Shiba Inu enjoying matcha">
+    </div>
+    <div class="description">
+        Welcome to Shiba Matcha, a Brisbane-based business dedicated to providing high-quality Japanese matcha. Our matcha is sourced from the finest tea farms in Japan, ensuring a rich, authentic flavor with every sip. Whether you're a matcha enthusiast or just discovering its benefits, we are here to bring you a taste of true Zen. Experience the harmony of tradition and quality with Shiba Matcha.
+    </div>
+</body>
+</html>
