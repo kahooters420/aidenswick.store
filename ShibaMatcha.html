@@ -22,17 +22,18 @@
             justify-content: space-between;
             align-items: center;
             background: url('bambu.PNG');
-            background-size: 100px;
+            background-size: 300px;
             background-repeat: repeat;
             background-color: rgba(163, 217, 119, 0.8);
             padding: 10px 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: top 0.3s;
         }
         .top-title {
             font-family: 'Bubblegum Sans', cursive;
-            font-size: 4rem;
-            color: #4caf50;
-            text-shadow: 2px 2px 5px #a2d5c6;
+            font-size: 2rem;
+            color: #a8e6a3;
+            text-shadow: 4px 4px 8px white;
         }
         .home-button {
             background-color: #81c784;
@@ -54,7 +55,7 @@
             padding: 10px;
             background-color: #d8f3dc;
             border-radius: 5px;
-            margin-right: 40px;
+            margin-right: 20px;
         }
         .sign-in:hover {
             text-decoration: underline;
@@ -64,17 +65,19 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
-            margin: 100px 0 20px 0;
+            margin: 50px 0 20px 0;
         }
         .menu button {
             background-color: #81c784;
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 15px 50px;
             font-size: 1.2rem;
             border-radius: 10px;
             cursor: pointer;
             transition: 0.3s;
+            flex: 1;
+            max-width: 200px;
         }
         .menu button:hover {
             background-color: #66bb6a;
@@ -95,11 +98,31 @@
         .body-title {
             font-family: 'Bubblegum Sans', cursive;
             font-size: 6rem;
-            color: #4caf50;
-            text-shadow: 2px 2px 5px #a2d5c6;
-            margin-top: 80px;
+            color: #a8e6a3;
+            text-shadow: 4px 4px 8px white;
+            margin-top: 50px;
+        }
+        @media (max-width: 768px) {
+            .top-bar {
+                top: -100px;
+            }
+            body:hover .top-bar {
+                top: 0;
+            }
         }
     </style>
+    <script>
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const topBar = document.querySelector('.top-bar');
+            if (window.scrollY > lastScrollY) {
+                topBar.style.top = '-100px';
+            } else {
+                topBar.style.top = '0';
+            }
+            lastScrollY = window.scrollY;
+        });
+    </script>
 </head>
 <body>
     <div class="top-bar">
