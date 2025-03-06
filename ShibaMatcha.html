@@ -18,6 +18,7 @@
             color: #4caf50;
             text-shadow: 2px 2px 5px #a2d5c6;
             padding: 20px;
+            margin-top: 50px;
         }
         .menu {
             display: flex;
@@ -52,10 +53,18 @@
             max-width: 800px;
             margin: auto;
         }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f2f2eb;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
         .home-button {
-            position: absolute;
-            top: 10px;
-            left: 10px;
             background-color: #81c784;
             color: white;
             border: none;
@@ -68,10 +77,21 @@
         .home-button:hover {
             background-color: #66bb6a;
         }
+        .sign-in {
+            font-size: 1rem;
+            color: #4caf50;
+            cursor: pointer;
+        }
+        .sign-in:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <button class="home-button" onclick="window.location.href='index.html'">Home</button>
+    <div class="top-bar">
+        <button class="home-button" onclick="window.location.href='index.html'">Home</button>
+        <div class="sign-in" onclick="alert('Sign in feature coming soon!')">Sign In</div>
+    </div>
     <div class="header">Shiba Matcha</div>
     <div class="menu">
         <button>Page 1</button>
@@ -83,7 +103,6 @@
         <button>Page 7</button>
         <button>Page 8</button>
         <button>Page 9</button>
-        <button>Page 10</button>
     </div>
     <div class="image-container">
         <img src="shiba.PNG" alt="Shiba Inu enjoying matcha">
