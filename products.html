@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products - High-End Matcha Store</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background-color: #fff; color: #333; }
+    header { background-color: #f8f8f8; padding: 20px; border-bottom: 1px solid #ddd; }
+    .logo a { font-size: 24px; font-weight: bold; text-decoration: none; color: #333; }
+    nav { margin-top: 10px; }
+    nav ul { list-style: none; display: flex; }
+    nav ul li { margin-right: 15px; }
+    nav ul li a { text-decoration: none; color: #333; font-size: 16px; }
+    .search-cart { display: flex; align-items: center; margin-top: 10px; }
+    .search-box input { padding: 5px; font-size: 14px; }
+    .cart img { width: 24px; height: 24px; }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product {
+      border: 1px solid #ddd;
+      padding: 15px;
+      text-align: center;
+    }
+    .product img { width: 100%; height: auto; }
+    .product h3 { margin: 10px 0; font-size: 18px; }
+    .product p { margin: 10px 0; color: #555; }
+    .price { font-size: 18px; color: #000; margin: 10px 0; }
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #333;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover { background-color: #555; }
+    footer {
+      background-color: #f8f8f8;
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <a href="index.html">High-End Matcha Store</a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="shiba_matcha.html">Shiba Matcha</a></li>
+      </ul>
+    </nav>
+    <div class="search-cart">
+      <div class="search-box">
+        <input type="text" placeholder="Search products...">
+      </div>
+      <div class="cart">
+        <a href="#"><img src="cart-icon.png" alt="Cart"></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <h1 style="text-align:center; margin:20px 0;">Our Products</h1>
+    <section class="products">
+      <div class="product">
+        <img src="product1.jpg" alt="Matcha Powder">
+        <h3>Matcha Powder</h3>
+        <p>Quality matcha from Japan.</p>
+        <div class="price">¥1,500</div>
+        <button class="btn">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="product2.jpg" alt="Matcha Set">
+        <h3>Matcha Set</h3>
+        <p>Complete set for matcha ceremonies.</p>
+        <div class="price">¥3,200</div>
+        <button class="btn">Add to Cart</button>
+      </div>
+      <!-- Add more products as needed -->
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 High-End Matcha Store. All rights reserved.</p>
+    <p>Contact: info@matchastore.com</p>
+  </footer>
+</body>
+</html>
