@@ -53,8 +53,13 @@
       color: #2c5f2d;
     }
 
-    .cart-button {
+    /* Cart Wrapper */
+    .cart-wrapper {
       position: relative;
+    }
+
+    .cart-button {
+      cursor: pointer;
     }
 
     .cart-button img {
@@ -76,7 +81,7 @@
     /* Cart Dropdown Menu */
     .cart-dropdown {
       position: absolute;
-      top: 50px; /* Increased gap between cart button and dropdown */
+      top: 50px; /* Overlap the cart button */
       right: 0;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -89,21 +94,10 @@
       z-index: 1000;
     }
 
-    /* Hover behavior for cart button and dropdown */
-    .cart-button:hover .cart-dropdown,
+    /* Show dropdown when cart wrapper or dropdown is hovered */
+    .cart-wrapper:hover .cart-dropdown,
     .cart-dropdown:hover {
       display: flex;
-    }
-
-    /* Add a pseudo-element to create a gap between the cart button and dropdown */
-    .cart-button::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      height: 10px; /* Adjust the gap size as needed */
-      background: transparent;
     }
 
     .cart-dropdown button {
@@ -316,9 +310,11 @@
       <button onclick="comingSoon()">Shop</button>
       <button onclick="comingSoon()">About</button>
       <button onclick="comingSoon()">Contact</button>
-      <div class="cart-button">
-        <img src="cart.png" alt="Cart">
-        <span class="cart-count">0</span>
+      <div class="cart-wrapper">
+        <div class="cart-button" onclick="showCart()">
+          <img src="cart.png" alt="Cart">
+          <span class="cart-count">0</span>
+        </div>
         <!-- Cart Dropdown Menu -->
         <div class="cart-dropdown">
           <button onclick="showCart()">Checkout</button>
@@ -438,8 +434,18 @@
       if (cartItems.length === 0) {
         alert("Your cart is empty.");
       } else {
-        const cartList = cartItems.join("\n- ");
-        alert(`Your Cart:\n- ${cartList}`);
+        // Group identical items and count their quantities
+        const itemCounts = {};
+        cartItems.forEach(item => {
+          itemCounts[item] = (itemCounts[item] || 0) + 1;
+        });
+
+        // Format the cart list
+        const cartList = Object.entries(itemCounts)
+          .map(([item, count]) => `${count}x ${item}`)
+          .join("\n");
+
+        alert(`Your Cart:\n${cartList}`);
       }
     }
 
