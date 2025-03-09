@@ -56,6 +56,7 @@
     /* Cart Wrapper */
     .cart-wrapper {
       position: relative;
+      padding-bottom: 20px;
     }
 
     .cart-button {
@@ -81,7 +82,7 @@
     /* Cart Dropdown Menu */
     .cart-dropdown {
       position: absolute;
-      top: 50px; /* Overlap the cart button */
+      top: 100%; /* Overlap the cart button */
       right: 0;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -92,7 +93,7 @@
       padding: 10px;
       width: 150px;
       z-index: 1000;
-      pointer-events: all;
+      pointer-events: auto;
     }
 
     /* Show dropdown when cart wrapper or dropdown is hovered */
