@@ -73,6 +73,42 @@
       font-size: 12px;
     }
 
+    /* Cart Dropdown Menu */
+    .cart-dropdown {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+      width: 150px;
+      z-index: 1000;
+    }
+
+    .cart-button:hover .cart-dropdown,
+    .cart-dropdown:hover {
+      display: flex;
+    }
+
+    .cart-dropdown button {
+      background-color: #2c5f2d;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+    }
+
+    .cart-dropdown button:hover {
+      background-color: #1e3d1e;
+    }
+
     /* Added to Cart Confirmation */
     .added-to-cart {
       position: fixed;
@@ -268,10 +304,15 @@
       <button onclick="comingSoon()">Shop</button>
       <button onclick="comingSoon()">About</button>
       <button onclick="comingSoon()">Contact</button>
-      <button class="cart-button" onclick="comingSoon()">
+      <div class="cart-button">
         <img src="cart.png" alt="Cart">
         <span class="cart-count">0</span>
-      </button>
+        <!-- Cart Dropdown Menu -->
+        <div class="cart-dropdown">
+          <button onclick="showCart()">Checkout</button>
+          <button onclick="clearCart()">Clear Cart</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -289,17 +330,17 @@
       <div class="product">
         <img src="chickenburger.png" alt="Matcha Latte" onclick="showDescription('Matcha Latte')">
         <h3>Matcha Latte</h3>
-        <button onclick="addToCart()">Add to Cart</button>
+        <button onclick="addToCart('Matcha Latte')">Add to Cart</button>
       </div>
       <div class="product">
         <img src="chickenburger.png" alt="Matcha Kit" onclick="showDescription('Matcha Kit')">
         <h3>Matcha Kit</h3>
-        <button onclick="addToCart()">Add to Cart</button>
+        <button onclick="addToCart('Matcha Kit')">Add to Cart</button>
       </div>
       <div class="product">
         <img src="chickenburger.png" alt="Matcha Powder" onclick="showDescription('Matcha Powder')">
         <h3>Matcha Powder</h3>
-        <button onclick="addToCart()">Add to Cart</button>
+        <button onclick="addToCart('Matcha Powder')">Add to Cart</button>
       </div>
     </div>
   </section>
@@ -330,6 +371,22 @@
   <!-- JavaScript -->
   <script>
     let cartCount = 0;
+    let cartItems = [];
+
+    // Load cart from localStorage on page load
+    function loadCart() {
+      const savedCart = localStorage.getItem('cartItems');
+      if (savedCart) {
+        cartItems = JSON.parse(savedCart);
+        cartCount = cartItems.length;
+        document.querySelector('.cart-count').textContent = cartCount;
+      }
+    }
+
+    // Save cart to localStorage
+    function saveCart() {
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
 
     // Coming Soon Alert
     function comingSoon() {
@@ -342,9 +399,13 @@
     }
 
     // Add to Cart
-    function addToCart() {
+    function addToCart(productName) {
       cartCount++;
+      cartItems.push(productName);
       document.querySelector('.cart-count').textContent = cartCount;
+
+      // Save cart to localStorage
+      saveCart();
 
       // Create the "Added to Cart" confirmation
       const confirmation = document.createElement('div');
@@ -359,6 +420,28 @@
         confirmation.remove();
       }, 2000);
     }
+
+    // Show Cart Items
+    function showCart() {
+      if (cartItems.length === 0) {
+        alert("Your cart is empty.");
+      } else {
+        const cartList = cartItems.join("\n- ");
+        alert(`Your Cart:\n- ${cartList}`);
+      }
+    }
+
+    // Clear Cart
+    function clearCart() {
+      cartCount = 0;
+      cartItems = [];
+      document.querySelector('.cart-count').textContent = cartCount;
+      saveCart();
+      alert("Your cart has been cleared.");
+    }
+
+    // Load cart when the page loads
+    loadCart();
   </script>
 </body>
 </html>
