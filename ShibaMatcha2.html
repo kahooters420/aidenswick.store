@@ -2,237 +2,152 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>High-End Matcha Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shiba Matcha</title>
   <style>
-    /* Reset and base styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background-color: #fff; color: #333; }
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
 
-    /* Header styles */
-    header { background-color: #f8f8f8; padding: 20px; border-bottom: 1px solid #ddd; }
-    .logo { font-size: 24px; font-weight: bold; }
-    nav { margin-top: 10px; }
-    nav ul { list-style: none; display: flex; }
-    nav ul li { margin-right: 15px; }
-    nav ul li a { text-decoration: none; color: #333; font-size: 16px; }
-    .search-cart { display: flex; align-items: center; margin-top: 10px; }
-    .search-box input { padding: 5px; font-size: 14px; }
-    .cart img { width: 24px; height: 24px; }
+    /* Header Styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-    /* Hero banner */
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c5f2d;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-buttons button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .nav-buttons button:hover {
+      color: #2c5f2d;
+    }
+
+    .cart-button img {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Hero Section Styles */
     .hero {
       position: relative;
       text-align: center;
-      margin: 20px 0;
-    }
-    .hero img { width: 100%; max-height: 400px; object-fit: cover; }
-    .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(255, 255, 255, 0.8);
-      padding: 20px;
-      text-align: center;
-    }
-    .hero-text h1 { font-size: 32px; margin-bottom: 10px; }
-    .hero-text p { font-size: 18px; }
-
-    /* Subheading buttons below header */
-    .subheading-buttons {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .subheading-buttons button {
-      padding: 8px 16px;
-      margin: 0 5px;
-      font-size: 14px;
-      cursor: pointer;
+      padding: 100px 20px;
+      background-image: url('shibaart.PNG');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
     }
 
-    /* Shiba Matcha button */
-    .shiba-matcha-button { text-align: center; margin: 30px 0; }
-    .shiba-matcha-button a { text-decoration: none; }
-    .shiba-matcha-button button {
+    .hero h1 {
+      font-size: 48px;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    .hero button {
       padding: 10px 20px;
       font-size: 16px;
+      background-color: #2c5f2d;
+      color: #fff;
+      border: none;
       cursor: pointer;
     }
 
-    /* Product grid */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .product {
-      border: 1px solid #ddd;
-      padding: 15px;
-      text-align: center;
-    }
-    .product img { width: 100%; height: auto; }
-    .product h3 { margin: 10px 0; font-size: 18px; }
-    .product p { margin: 10px 0; color: #555; }
-    .price { font-size: 18px; color: #000; margin: 10px 0; }
-    .product button {
-      padding: 8px 15px;
-      font-size: 14px;
-      cursor: pointer;
+    .hero button:hover {
+      background-color: #1e3d1e;
     }
 
-    /* Footer styles */
+    /* Footer Styles */
     footer {
-      background-color: #f8f8f8;
-      padding: 20px;
       text-align: center;
-      border-top: 1px solid #ddd;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
     }
 
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0; top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.5);
+    footer p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
     }
-    .modal-content {
-      background-color: #fff;
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #ddd;
-      width: 80%;
-      max-width: 300px;
-      text-align: center;
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .nav-buttons {
+        gap: 10px;
+      }
     }
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .close:hover { color: #000; }
   </style>
 </head>
 <body>
-  <!-- Header with logo, navigation, search and cart -->
+  <!-- Header -->
   <header>
-    <div class="logo">High-End Matcha Store</div>
-    <nav>
-      <ul>
-        <li><a href="#" class="not-available">Home</a></li>
-        <li><a href="#" class="not-available">Products</a></li>
-        <li><a href="#" class="not-available">About Us</a></li>
-        <li><a href="#" class="not-available">Contact</a></li>
-        <li><a href="shiba_matcha.html">Shiba Matcha</a></li>
-      </ul>
-    </nav>
-    <div class="search-cart">
-      <div class="search-box">
-        <input type="text" placeholder="Search matcha products...">
-      </div>
-      <div class="cart">
-        <a href="#"><img src="cart-icon.png" alt="Cart"></a>
-      </div>
+    <div class="logo">Shiba Matcha</div>
+    <div class="nav-buttons">
+      <button onclick="comingSoon()">Shop</button>
+      <button onclick="comingSoon()">About</button>
+      <button onclick="comingSoon()">Contact</button>
+      <button class="cart-button" onclick="comingSoon()">
+        <img src="cart.png" alt="Cart">
+      </button>
     </div>
   </header>
 
-  <!-- Subheading buttons -->
-  <div class="subheading-buttons">
-    <button class="not-available">Home</button>
-    <button class="not-available">Products</button>
-    <button class="not-available">About Us</button>
-    <button class="not-available">Contact</button>
-    <a href="shiba_matcha.html"><button>Shiba Matcha</button></a>
-  </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Shiba Matcha</h1>
+    <p>Experience the finest matcha in Australia</p>
+    <button onclick="comingSoon()">Explore Now</button>
+  </section>
 
-  <!-- Main content with hero banner, button, and products -->
-  <main>
-    <!-- Hero section with a matcha banner -->
-    <div class="hero">
-      <img src="hero-image.jpg" alt="Premium Matcha Banner">
-      <div class="hero-text">
-        <h1>Premium Japanese Matcha</h1>
-        <p>Traditional craftsmanship meets modern quality.</p>
-      </div>
-    </div>
-
-    <!-- Button to link to Shiba Matcha page -->
-    <div class="shiba-matcha-button">
-      <a href="shiba_matcha.html">
-        <button>Shiba Matcha</button>
-      </a>
-    </div>
-
-    <!-- Product grid listing -->
-    <section class="products">
-      <div class="product">
-        <img src="product1.jpg" alt="Matcha Powder">
-        <h3>Matcha Powder</h3>
-        <p>High-grade matcha from Japan.</p>
-        <div class="price">¥1,500</div>
-        <button class="not-available">Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="product2.jpg" alt="Matcha Set">
-        <h3>Matcha Set</h3>
-        <p>Complete set for a matcha ceremony.</p>
-        <div class="price">¥3,200</div>
-        <button class="not-available">Add to Cart</button>
-      </div>
-      <!-- Add more product items as needed -->
-    </section>
-  </main>
-
-  <!-- Footer with contact info -->
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 High-End Matcha Store. All rights reserved.</p>
-    <p>Contact: info@matchastore.com</p>
+    <p>&copy; 2023 Shiba Matcha. All rights reserved.</p>
   </footer>
 
-  <!-- Modal for not available messages -->
-  <div id="popup-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>This feature is not available.</p>
-    </div>
-  </div>
-
-  <!-- JavaScript for modal functionality -->
+  <!-- JavaScript for Coming Soon Alert -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var modal = document.getElementById('popup-modal');
-      var closeBtn = document.querySelector('.modal-content .close');
-
-      function openModal(e) {
-        e.preventDefault();
-        modal.style.display = 'block';
-      }
-
-      // Attach event listeners to elements with class 'not-available'
-      var notAvailableElements = document.querySelectorAll('.not-available');
-      notAvailableElements.forEach(function(elem) {
-        elem.addEventListener('click', openModal);
-      });
-
-      // Close modal on clicking the close button
-      closeBtn.addEventListener('click', function() {
-        modal.style.display = 'none';
-      });
-
-      // Close modal when clicking outside the modal content
-      window.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          modal.style.display = 'none';
-        }
-      });
-    });
+    function comingSoon() {
+      alert("Coming Soon! Stay tuned for updates.");
+    }
   </script>
 </body>
 </html>
