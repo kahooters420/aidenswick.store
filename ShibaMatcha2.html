@@ -8,7 +8,7 @@
     /* Reset and base styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: Arial, sans-serif; background-color: #fff; color: #333; }
-    
+
     /* Header styles */
     header { background-color: #f8f8f8; padding: 20px; border-bottom: 1px solid #ddd; }
     .logo { font-size: 24px; font-weight: bold; }
@@ -19,7 +19,7 @@
     .search-cart { display: flex; align-items: center; margin-top: 10px; }
     .search-box input { padding: 5px; font-size: 14px; }
     .cart img { width: 24px; height: 24px; }
-    
+
     /* Hero banner */
     .hero {
       position: relative;
@@ -34,8 +34,23 @@
       transform: translate(-50%, -50%);
       background: rgba(255, 255, 255, 0.8);
       padding: 20px;
+      text-align: center;
     }
-    
+    .hero-text h1 { font-size: 32px; margin-bottom: 10px; }
+    .hero-text p { font-size: 18px; }
+
+    /* Subheading buttons below header */
+    .subheading-buttons {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .subheading-buttons button {
+      padding: 8px 16px;
+      margin: 0 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
     /* Shiba Matcha button */
     .shiba-matcha-button { text-align: center; margin: 30px 0; }
     .shiba-matcha-button a { text-decoration: none; }
@@ -44,7 +59,7 @@
       font-size: 16px;
       cursor: pointer;
     }
-    
+
     /* Product grid */
     .products {
       display: grid;
@@ -66,7 +81,7 @@
       font-size: 14px;
       cursor: pointer;
     }
-    
+
     /* Footer styles */
     footer {
       background-color: #f8f8f8;
@@ -74,6 +89,35 @@
       text-align: center;
       border-top: 1px solid #ddd;
     }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0; top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      width: 80%;
+      max-width: 300px;
+      text-align: center;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover { color: #000; }
   </style>
 </head>
 <body>
@@ -82,15 +126,16 @@
     <div class="logo">High-End Matcha Store</div>
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#" class="not-available">Home</a></li>
+        <li><a href="#" class="not-available">Products</a></li>
+        <li><a href="#" class="not-available">About Us</a></li>
+        <li><a href="#" class="not-available">Contact</a></li>
+        <li><a href="shiba_matcha.html">Shiba Matcha</a></li>
       </ul>
     </nav>
     <div class="search-cart">
       <div class="search-box">
-        <input type="text" placeholder="Search products...">
+        <input type="text" placeholder="Search matcha products...">
       </div>
       <div class="cart">
         <a href="#"><img src="cart-icon.png" alt="Cart"></a>
@@ -98,14 +143,23 @@
     </div>
   </header>
 
+  <!-- Subheading buttons -->
+  <div class="subheading-buttons">
+    <button class="not-available">Home</button>
+    <button class="not-available">Products</button>
+    <button class="not-available">About Us</button>
+    <button class="not-available">Contact</button>
+    <a href="shiba_matcha.html"><button>Shiba Matcha</button></a>
+  </div>
+
   <!-- Main content with hero banner, button, and products -->
   <main>
     <!-- Hero section with a matcha banner -->
     <div class="hero">
       <img src="hero-image.jpg" alt="Premium Matcha Banner">
       <div class="hero-text">
-        <h1>Experience Premium Matcha</h1>
-        <p>Shop high-quality matcha products online.</p>
+        <h1>Premium Japanese Matcha</h1>
+        <p>Traditional craftsmanship meets modern quality.</p>
       </div>
     </div>
 
@@ -123,14 +177,14 @@
         <h3>Matcha Powder</h3>
         <p>High-grade matcha from Japan.</p>
         <div class="price">¥1,500</div>
-        <button>Add to Cart</button>
+        <button class="not-available">Add to Cart</button>
       </div>
       <div class="product">
         <img src="product2.jpg" alt="Matcha Set">
         <h3>Matcha Set</h3>
         <p>Complete set for a matcha ceremony.</p>
         <div class="price">¥3,200</div>
-        <button>Add to Cart</button>
+        <button class="not-available">Add to Cart</button>
       </div>
       <!-- Add more product items as needed -->
     </section>
@@ -141,5 +195,44 @@
     <p>&copy; 2025 High-End Matcha Store. All rights reserved.</p>
     <p>Contact: info@matchastore.com</p>
   </footer>
+
+  <!-- Modal for not available messages -->
+  <div id="popup-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>This feature is not available.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript for modal functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var modal = document.getElementById('popup-modal');
+      var closeBtn = document.querySelector('.modal-content .close');
+
+      function openModal(e) {
+        e.preventDefault();
+        modal.style.display = 'block';
+      }
+
+      // Attach event listeners to elements with class 'not-available'
+      var notAvailableElements = document.querySelectorAll('.not-available');
+      notAvailableElements.forEach(function(elem) {
+        elem.addEventListener('click', openModal);
+      });
+
+      // Close modal on clicking the close button
+      closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+
+      // Close modal when clicking outside the modal content
+      window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
