@@ -73,6 +73,28 @@
       font-size: 12px;
     }
 
+    /* Added to Cart Confirmation */
+    .added-to-cart {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      background-color: rgba(44, 95, 45, 0.9);
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      animation: fadeInOut 2s ease-in-out;
+      z-index: 1000;
+    }
+
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; transform: translateY(-10px); }
+      10%, 90% { opacity: 1; transform: translateY(0); }
+    }
+
     /* Hero Section Styles */
     .hero {
       position: relative;
@@ -131,7 +153,6 @@
     .product {
       width: 200px;
       text-align: center;
-      position: relative;
     }
 
     .product img {
@@ -162,32 +183,6 @@
 
     .product button:hover {
       background-color: #1e3d1e;
-    }
-
-    /* Added to Cart Confirmation */
-    .added-to-cart {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background-color: rgba(44, 95, 45, 0.9);
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      animation: fadeInOut 2s ease-in-out;
-    }
-
-    .added-to-cart img {
-      width: 12px;
-      height: 12px;
-    }
-
-    @keyframes fadeInOut {
-      0%, 100% { opacity: 0; }
-      10%, 90% { opacity: 1; }
     }
 
     /* Business Description Styles */
@@ -294,17 +289,17 @@
       <div class="product">
         <img src="chickenburger.png" alt="Matcha Latte" onclick="showDescription('Matcha Latte')">
         <h3>Matcha Latte</h3>
-        <button onclick="addToCart(this)">Add to Cart</button>
+        <button onclick="addToCart()">Add to Cart</button>
       </div>
       <div class="product">
         <img src="chickenburger.png" alt="Matcha Kit" onclick="showDescription('Matcha Kit')">
         <h3>Matcha Kit</h3>
-        <button onclick="addToCart(this)">Add to Cart</button>
+        <button onclick="addToCart()">Add to Cart</button>
       </div>
       <div class="product">
         <img src="chickenburger.png" alt="Matcha Powder" onclick="showDescription('Matcha Powder')">
         <h3>Matcha Powder</h3>
-        <button onclick="addToCart(this)">Add to Cart</button>
+        <button onclick="addToCart()">Add to Cart</button>
       </div>
     </div>
   </section>
@@ -347,21 +342,17 @@
     }
 
     // Add to Cart
-    function addToCart(button) {
+    function addToCart() {
       cartCount++;
       document.querySelector('.cart-count').textContent = cartCount;
 
       // Create the "Added to Cart" confirmation
       const confirmation = document.createElement('div');
       confirmation.className = 'added-to-cart';
-      confirmation.innerHTML = `
-        <img src="checkmark.png" alt="Checkmark">
-        Added to Cart
-      `;
+      confirmation.innerHTML = `✔️ Added to Cart`;
 
-      // Append the confirmation to the product image
-      const product = button.closest('.product');
-      product.appendChild(confirmation);
+      // Append the confirmation to the body
+      document.body.appendChild(confirmation);
 
       // Remove the confirmation after 2 seconds
       setTimeout(() => {
