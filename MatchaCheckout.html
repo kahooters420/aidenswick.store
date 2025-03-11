@@ -73,7 +73,7 @@
     document.getElementById("checkout-button").addEventListener("click", async () => {
       const { error } = await stripe.redirectToCheckout({
         lineItems: [
-          { price: "price_1R1T4wFQNTPtHURMMp9wjWp7", quantity: 1 }
+          { price: "price_1R1USYFQNTPtHURMxQvUqaob", quantity: 1 }
         ],
         mode: "payment",
         successUrl: "http://aidenswick.store/success.html",
