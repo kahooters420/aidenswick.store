@@ -1,90 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout - Shiba Matcha</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://js.stripe.com/v3/"></script>
-  <style>
-    body {
-      font-family: 'Noto Serif JP', serif;
-      background-color: #f4f4f4;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      color: #2c5f2d;
-    }
-
-    .container {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-      margin: 50px auto;
-    }
-
-    .product {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      font-size: 22px;
-      font-weight: bold;
-      color: #2c5f2d;
-      margin-bottom: 20px;
-    }
-
-    button {
-      background-color: #2c5f2d;
-      color: #fff;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      width: 100%;
-    }
-
-    button:hover {
-      background-color: #1e3d1e;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            background-color: #635bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #5046e5;
+        }
+    </style>
 </head>
 <body>
 
-  <h1>Shiba Matcha Checkout</h1>
+    <h1>My Store</h1>
+    <p>Click below to purchase</p>
+    
+    <button id="checkout-button">Buy Now</button>
 
-  <div class="container">
-    <div class="product">Matcha Kit</div>
-    <div class="price">$19.99</div>
-    <button id="checkout-button">Pay Now</button>
-  </div>
-
-  <script>
-    const stripe = Stripe("pk_test_51R10hpFQNTPtHURMPu6HxVQDJjhaS2rSzEAOFeZXCjHMzxLouJCpVK0ZeRVltwjb4QoqdQLpVv8gpmKA2s8buHDZ00hsHDP6uJ"); // Replace with your Stripe Publishable Key
-
-    document.getElementById("checkout-button").addEventListener("click", async () => {
-      const { error } = await stripe.redirectToCheckout({
-        lineItems: [
-          { price: "price_1R1USYFQNTPtHURMxQvUqaob", quantity: 1 }
-        ],
-        mode: "payment",
-        successUrl: "http://aidenswick.store/success.html",
-        cancelUrl: "http://aidenswick.store/cancel.html"
-      });
-
-      if (error) {
-        console.error(error);
-      }
-    });
-  </script>
+    <script>
+        document.getElementById("checkout-button").addEventListener("click", function () {
+            window.location.href = "https://buy.stripe.com/test_cN2bJ7e7s0ed6QwfYY"; // Replace with your Stripe Checkout URL
+        });
+    </script>
 
 </body>
 </html>
